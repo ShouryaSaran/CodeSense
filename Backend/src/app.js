@@ -5,8 +5,10 @@ const dotenv = require('dotenv')
 dotenv.config()
 const router = require('./Routes/ai.routes')
 
-app.use(cors())
+app.use(cors({
+  origin: process.env.FRONTEND_URL || "http://localhost:5173"
+}))
 app.use(express.json())
-app.use('/api',router)
+app.use('/api', router)
 
 module.exports = app
