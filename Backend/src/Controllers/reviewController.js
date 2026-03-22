@@ -19,11 +19,12 @@ const reviewCodeController = async (req,res) => {
             review
         })
     } catch (error) {
-        return res.status(500).json({
-            message: 'Failed to generate review',
-            error: error.message
-        })
-    }
+    console.error("Review generation failed:", error);
+    return res.status(500).json({
+        message: 'Failed to generate review',
+        error: error.message
+    })
+}
 }
 
 module.exports = {reviewCodeController}
